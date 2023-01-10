@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pow</title>
+</head>
+<body>
+
+<label for="x">Input number: <input type="number" name="getPow" id="x" required></label>
+<br>
+<label for="n">Input power: <input type="number" name="getPow" id="n" required></label>
+<br>
+<button type="submit" id="calc" onclick="getPow()">Calc</button>
+<br>
+<button type="reset" id="reset" onclick="reset()">Reset</button>
+<br>
+<p><span id="xRes">_</span> ** <span id="nRes">_</span> = <span id="answer"> _ </span></p>
+</body>
+<script>
+    const xNum = document.getElementById('x');
+    const nNum = document.getElementById('n');
+    const xRes = document.getElementById('xRes');
+    const nRes = document.getElementById('nRes');
+    const answer = document.getElementById('answer');
+
+    const getPow = () => {
+        const x = +xNum.value;
+        const n = +nNum.value;
+        const result = Math.pow(x, n);
+
+        xRes.innerHTML = String(x);
+        nRes.innerHTML = String(n);
+        answer.innerHTML = String(result);
+    };
+
+    const reset = () => {
+        nNum.value = '';
+        xNum.value = '';
+        xRes.innerHTML = '_';
+        nRes.innerHTML = '_';
+        answer.innerHTML = '_';
+    };
+
+</script>
+</html>
