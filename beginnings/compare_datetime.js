@@ -21,7 +21,7 @@ function testDateTime(a, b) {
     console.log(DAYS[day]);
 }
 
-const a = "19 October 1909 10:27";
+let a = "19 October 1909 10:27";
 const b = "28 March 1909 00:59";
 
 testDateTime(a, b);
