@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <style>
+    .menu{
+      position: relative;
+      background-color: #c2c2c2;
+      cursor: pointer;
+    }
+    .menu__btn {
+      width: 70px;
+      height: 50px;
+      background-color: #ff2200;
+      border: 1px solid #000;
+    }
+    .menu__box {
+      position: absolute;
+      top: 100%;
+      padding: 50px 70px;
+      background-color: #fff;
+      border: 1px solid #000;
+      box-shadow: 14px 39px 21px 0 rgba(255, 101, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>hide menu</h1>
+  <div class="menu">
+    <div class="menu__btn"></div>
+    <div class="menu__box">
+      <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+
+    const menuEl = document.querySelector('.menu');
+    const menuBox = document.querySelector('.menu__box');
+    const menuBtn = document.querySelector('.menu__btn');
+
+    function checkMenu() {
+      return !menuBox.hidden;
+    }
+
+    function switchMenu() {
+      menuBox.hidden = !menuBox.hidden;
+    }
+
+    function hideMenu(){
+      menuBox.hidden = true;
+    }
+
+    document.addEventListener('click', () => {
+      console.log('pressed')
+      if (checkMenu()) hideMenu();
+    })
+
+    menuEl.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (event.target === menuBtn) {
+        switchMenu()
+      }
+    })
+
+
+  </script>
+</body>
+</html>

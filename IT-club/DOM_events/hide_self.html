@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hide self button</title>
+  <style>
+    #selfHide {
+      width: 400px;
+      height: 400px;
+      background-color: #ee3311;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<h1>press in square to hide it for 4 seconds</h1>
+  <div id="selfHide">
+  </div>
+  <script>
+    const hide = () => divBtn.hidden = !divBtn.hidden;
+    const divBtn = document.querySelector('#selfHide');
+    divBtn.addEventListener('click', () => {
+      hide()
+      setTimeout(hide, 4000);
+    })
+  </script>
+</body>
+
+</html>
