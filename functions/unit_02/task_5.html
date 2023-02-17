@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 5 | Unit 02</title>
+</head>
+<body>
+<p>Напишите функцию t5, которая делит число a на b и результат выводит в out. Если b равно нулю, то в out
+  выводится аргумент c, который по умолчанию равен нулю.</p>
+
+<br>
+<label for="fArg">Первый аргумент: <input type="number" name="first" id="fArg"></label>
+<br>
+<label for="sArg">Второй аргумент: <input type="number" name="second" id="sArg"></label>
+<br>
+<button class="btn">print</button>
+<p class="out">_</p>
+
+<script>
+  function t5(a, b, c) {
+    const out = document.querySelector('.out');
+
+    if (b) {
+      out.textContent = (a / b).toFixed(4);
+    } else {
+      out.textContent = c;
+    }
+  }
+
+  document.querySelector('.btn').addEventListener('click', function () {
+    const fNum = +document.querySelector('#fArg').value;
+    const sNum = +document.querySelector('#sArg').value;
+    t5(fNum, sNum, false);
+  })
+</script>
+</body>
+</html>

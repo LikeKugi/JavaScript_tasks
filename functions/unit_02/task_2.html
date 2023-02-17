@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 2 | Unit 02</title>
+</head>
+<body>
+<p>Напишите функцию t2, которая принимает три аргумента (число от, число до и блок, в который нужно вывести данные) и
+    выводит в указанный блок случайное целое число от первого аргумента(включительно) до второго(включительно). Функция
+    запускается по кнопке. Обратите внимание на запуск функции. Чтобы передать аргументы, нам пришлось обернуть
+    функцию в анонимную.</p>
+<br>
+<label for="fArg">Первый аргумент: <input type="number" name="first" id="fArg"></label>
+<br>
+<label for="sArg">Второй аргумент: <input type="number" name="second" id="sArg"></label>
+<br>
+<button class="btn">print</button>
+<p class="out">_</p>
+
+<script>
+    function t2(min, max, block) {
+        block.textContent = Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    document.querySelector('.btn').addEventListener('click', function () {
+        const out = document.querySelector('.out');
+        const fNum = +document.querySelector('#fArg').value;
+        const sNum = +document.querySelector('#sArg').value;
+        t2(fNum, sNum, out); // функция должна вывести случайное целое от 120 до 140 в блок out-2
+    })
+</script>
+
+</body>
+</html>

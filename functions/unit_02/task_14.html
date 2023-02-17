@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 14 | Unit 02</title>
+</head>
+<body>
+<p>Напишите функцию, t14, которая выводит в блок block (переданный как аргумент) массив (переданный как аргумент arr) c
+  помощью функции funcArg (переданной как аргумент).</p>
+
+<button class="btn">print</button>
+<p class="out">_____</p>
+
+<script>
+  const out = document.querySelector('.out');
+
+  function t14(arr, funcArg, block) {
+    block.textContent = funcArg(arr)
+  }
+
+  // функции для вывода уже заготовлены
+  function showArrSpace(arr) {
+    return arr.join(' ');
+  }
+
+  function showArrUnderscore(arr) {
+    return arr.join('_');
+  }
+
+  document.querySelector('.btn').addEventListener('click', function () {
+  t14([3, 4, 5], showArrSpace, out);
+  // попробуйте также вместо showArrSpace2 поставить showArrUnderscore2
+    setTimeout(() => {
+      t14([3, 4, 5], showArrUnderscore, out);
+    }, 2000);
+  })</script>
+</body>
+</html>

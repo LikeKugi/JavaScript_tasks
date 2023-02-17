@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 6 7 | Unit 02</title>
+</head>
+<body>
+<p>Давайте напишем функцию t6, которая выводит переданный ей массив (как аргумент arr) в блок (переданный как аргумент
+    block) через пробел.</p>
+
+<button class="btn">print</button>
+
+<p class="out">_____</p>
+
+<p>Давайте напишем функцию, которая выводит переданный ей массив (как аргумент arr) в блок (переданный как аргумент
+    block) через пробел. Задайте аргумент arr равный по умолчанию пустому массиву. Добавьте внутрь функции проверку на
+    массив аргумента arr. Если arr не массив, то в block выводим false.
+</p>
+
+<button class="btn2">print</button>
+
+<p class="out2">_____</p>
+
+<script>
+    const out = document.querySelector('.out');
+    const out2 = document.querySelector('.out2');
+
+    function t6(arr, block) {
+        block.textContent = arr;
+    }
+
+    function t7(arr=[], block) {
+        if (Array.isArray(arr)) {
+            block.textContent = arr.join(' ');
+        } else {
+            block.textContent = false;
+        }
+    }
+
+    document.querySelector('.btn').addEventListener('click', function () {
+        t6([99, 44, 55, 66], out);
+    })
+
+    document.querySelector('.btn2').addEventListener('click', () => {
+        t7([99, 44, 55, 66], out2)
+        setTimeout(() => {
+            t7('[99, 44, 55, 66]', out2)
+        }, 2000);
+    })
+</script>
+</body>
+</html>

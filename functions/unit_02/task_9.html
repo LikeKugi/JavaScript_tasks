@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 9 | Unit 02</title>
+</head>
+<body>
+<p>Давайте напишем функцию t9, которая позволяет выводить текст переданный ей в качестве аргумента text в блок block.
+  При этом переданный текст с помощью trim очищается от пробелов до и после и переводится в нижний регистр. Зададим
+  значение по умолчанию для text - пустую строку, это позволит нам избежать ошибок, если данный аргумент упустили, и
+  добавим в функцию проверку - если block не существует, то функция ничего не выводит.</p>
+
+<button class="btn">print</button>
+
+<p class="out">_____</p>
+
+<script>
+  const out = document.querySelector('.out');
+
+  function t9(text='', block) {
+    if (block) {
+      block.textContent = text.trim().toLowerCase();
+    }
+  }
+
+  document.querySelector('.btn').addEventListener('click', function () {
+  t9(' HelLO wORLd ', out);
+  })</script>
+</body>
+</html>
