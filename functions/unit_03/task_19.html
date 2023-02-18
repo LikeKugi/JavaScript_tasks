@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 19 | Unit 03</title>
+  <style>
+    .out-19 {
+      padding: 5px 50px;
+      width: 95%;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+<section>
+  <p><b>Task 19.</b></p>
+  <p>Напишите функцию, которая получает value из input.i-19 и возвращает его.
+  </p>
+  <input type="range" class="i-19">
+  <div class="out-19" style="background:orange;">out-19</div>
+</section>
+<script>
+  function t19() {
+    return document.querySelector('.i-19').value;
+  }
+
+  document.querySelector('.i-19').addEventListener('input', function () {
+    document.querySelector('.out-19').style.borderRadius = t19() + 'px';
+  })
+</script>
+</body>
+</html>

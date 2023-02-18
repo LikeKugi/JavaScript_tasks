@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 27 | Unit 03</title>
+</head>
+<body>
+<section>
+  <p><b>Task 27.</b></p>
+  <p>Напишите функцию которая получает из input.i-27 значение как аргумент и проверяет его наличие в объекте
+    obj27. Если
+    находит совпадение - возвращает ключ. Если не находит - false.
+  </p>
+  <input type="text" class="i-27">
+  <button class="button-primary b-27">Task-27</button>
+  <div class="out-27">out-27</div>
+</section>
+<script>
+  const obj27 = {
+    h: 'a',
+    j: 'b',
+    k: 'z',
+    m: 'w'
+  }
+
+  function t27(v) {
+    return obj27[v] || false;
+  }
+
+  document.querySelector('.b-27').addEventListener('click', function () {
+    let v = document.querySelector('.i-27').value;
+    document.querySelector('.out-27').textContent = t27(v);
+  })
+
+</script>
+</body>
+</html>

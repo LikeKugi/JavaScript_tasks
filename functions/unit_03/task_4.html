@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 4 | Unit 03</title>
+</head>
+<body>
+<section>
+  <p><b>Task 4.</b></p>
+  <p>На странице есть radiobutton .r-4. Напишите функцию, которая возвращет value выбранного radiobutton.</p>
+  <div>
+    <div><label><input checked type="radio" class="r-4" name="r4" value="111">111</label></div>
+    <div><label><input type="radio" class="r-4" name="r4" value="222">222</label></div>
+    <div><label><input type="radio" class="r-4" name="r4" value="333">333</label></div>
+  </div>
+  <button class="button-primary b-4">Task-4</button>
+  <div class="out-4">out-4</div>
+</section>
+<script>
+  const btnEl = document.querySelector('.b-4');
+  const out = document.querySelector('.out-4');
+  const radioEls = document.querySelectorAll('.r-4');
+
+  btnEl.addEventListener('click', () => {
+    let outVal;
+    radioEls.forEach(el => {
+      if (el.checked) outVal = el.value;
+    });
+    out.textContent = outVal;
+  })
+</script>
+</body>
+</html>

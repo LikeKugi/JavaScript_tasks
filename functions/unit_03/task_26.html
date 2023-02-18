@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0 ">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 26 | Unit 03</title>
+</head>
+<body>
+<section>
+  <p><b>Task 26.</b></p>
+  <p>Напишите функцию которая получает из input.i-26 имя пользователя и если это не пустая строка - то выводит
+    его в out-26 в
+    нижнем регистре. Если строка пустая - то выходит из функции.
+  </p>
+  <input type="text" class="i-26">
+  <button class="button-primary b-26">Task-26</button>
+  <div class="out-26">out-26</div>
+</section>
+<script>
+  const inputEl = document.querySelector('.i-26');
+  const out = document.querySelector('.out-26');
+  function t26() {
+    if (!inputEl.value) {
+      return;
+    }
+    out.textContent = inputEl.value.toLowerCase();
+  }
+
+  document.querySelector('.b-26').addEventListener('click', t26);
+</script>
+</body>
+</html>

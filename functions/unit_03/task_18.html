@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 18 | Unit 03</title>
+</head>
+<body>
+<section>
+  <p><b>Task 18.</b></p>
+  <p>Напишите функцию, которая получает value из input.i-18 и возвращает его.
+  </p>
+  <input type="range" class="i-18">
+  <div class="out-18">out-18</div>
+</section>
+<script>
+  function t18() {
+    return document.querySelector('.i-18').value;
+  }
+
+  document.querySelector('.i-18').addEventListener('input', function () {
+    document.querySelector('.out-18').textContent = t18();
+  })
+</script>
+</body>
+</html>

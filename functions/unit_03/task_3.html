@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 3 | Unit 03</title>
+</head>
+<body>
+<section>
+    <p><b>Task 3.</b></p>
+    <p>На странице есть checkbox .ch-3. Напишите функцию, которая возвращает его value если он выбран и false
+        если не выбран.
+    </p>
+    <div>
+        <label><input type="checkbox" class="ch-3" value="567"> ch-3</label>
+    </div>
+    <button class="button-primary b-3">Task-3</button>
+    <div class="out-3">out-3</div>
+</section>
+<script>
+    const btnEl = document.querySelector('.b-3');
+    const out = document.querySelector('.out-3');
+
+    btnEl.addEventListener('click', () => {
+        const checkEl =  document.querySelector('.ch-3');
+        if (checkEl.checked) {
+            out.textContent = checkEl.value;
+        }
+    })
+</script>
+</body>
+</html>

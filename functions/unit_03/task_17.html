@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 17 | Unit 03</title>
+</head>
+<body>
+<section>
+  <p><b>Task 17.</b></p>
+  <p>Напишите функцию, которая получает value выбранного option select.s-171 и возвращает его.
+  </p>
+  <select class="s-171">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <select class="s-172">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</section>
+<script>
+  function t17() {
+    return document.querySelector('.s-171').value;
+  }
+
+  document.querySelector('.s-171').addEventListener('change', function () {
+    document.querySelector('.s-172').value = t17();
+  })
+</script>
+</body>
+</html>
