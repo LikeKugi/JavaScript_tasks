@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 3 | Unit 06</title>
+</head>
+<body>
+<section>
+  <p><b>Task 3.</b></p>
+  <p>Запустите функцию max с аргументами 5, 8 и контекстом out-3. Функция должна запускаться при загрузке
+    страницы.
+    Используем call.
+  </p>
+  <div class="out-3">out-3</div>
+
+</section>
+
+<script>
+  function max(a, b) {
+    this.textContent = (a > b) ? a : b;
+  }
+
+  max.call(document.querySelector('.out-3'), 5, 8);
+</script>
+</body>
+</html>

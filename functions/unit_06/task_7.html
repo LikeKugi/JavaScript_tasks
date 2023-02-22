@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 7 | Unit 06</title>
+</head>
+<body>
+<section>
+  <p><b>Task 7.</b></p>
+  <p>Запустите функцию max с аргументами 5, 8 и контекстом out-7. Функция должна запускаться при загрузке
+    страницы.
+    Используем apply.
+  </p>
+  <button class="button-primary  b-7">Task 7</button>
+  <div class="out-7">out-7</div>
+</section>
+<script>
+  function max(a, b) {
+    this.textContent = (a > b) ? a : b;
+  }
+  document.querySelector('.b-7').addEventListener('click', () => {
+    max.apply(document.querySelector('.out-7'), [5, 8]);
+  })
+</script>
+</body>
+</html>

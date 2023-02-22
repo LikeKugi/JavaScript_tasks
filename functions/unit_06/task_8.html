@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 8 | Unit 06</title>
+</head>
+<body>
+<section>
+  <p><b>Task 8.</b></p>
+  <p>Метод Math.max - позволяет находить максимум из любого количества переданных в него аргументов. Наприме,
+    он сработает и
+    так Math.max(22,33,1,2,33,44,55,1,100,45) и так Math.max(33,1,2) (проверьте самостоятельно). Минус
+    метода - его тяжело
+    использовать если мы не знаем количество передаваемых в него аргументов. Давайте напишем следующий код
+    (см. код). Как
+    видите, теперь не важно сколько элементов в массиве, и мы всегда сможем найти максимум. Обратите
+    внимание, в качестве
+    контекста мы передали null.
+  </p>
+  <div class="out-8">out-8</div>
+</section>
+<script>
+  const out8 = document.querySelector('.out-8');
+  let ar8 = [45,23,21];
+
+  out8.textContent = Math.max.apply(null, ar8);
+</script>
+</body>
+</html>

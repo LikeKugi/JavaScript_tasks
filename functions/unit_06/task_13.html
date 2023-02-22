@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 13 | Unit 06</title>
+</head>
+<body>
+<section>
+  <p><b>Task 13.</b></p>
+  <p>C помощью bind создайте частичную функцию t13, которая основана на функции max но контекст - out-13.
+    Первый агрумент
+    функции max должен быть заменен на 50. Запустите эту функцию c числом 48.
+  </p>
+  <div class="out-13">out-13</div>
+</section>
+<script>
+  function max(a, b) {
+    this.textContent = (a > b) ? a : b;
+  }
+  const t13 = max.bind(document.querySelector('.out-13'), 50);
+  t13(48);
+</script>
+</body>
+</html>

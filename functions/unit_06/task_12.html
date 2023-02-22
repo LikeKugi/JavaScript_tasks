@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 12 | Unit 06</title>
+</head>
+<body>
+<section>
+  <p><b>Task 12.</b></p>
+  <p>C помощью bind создайте функцию t12, которая основана на функции max но контекст - out-12. Запустите эту
+    функцию c
+    числами 11, 88.
+  </p>
+  <div class="out-12">out-12</div>
+</section>
+<script>
+  function max(a, b) {
+    this.textContent = (a > b) ? a : b;
+  }
+  const t2 = (max.bind(document.querySelector('.out-12'), 11, 88))();
+</script>
+</body>
+</html>

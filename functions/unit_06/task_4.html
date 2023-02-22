@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 4 | Unit 06</title>
+</head>
+<body>
+<section>
+  <p><b>Task 4.</b></p>
+  <p>Напишите анонимную функцию, которая при нажатии b-4 запускает max с контекстом out-4 и аргументами 22,13.
+    Применяете
+    call.</p>
+  <button class="button-primary  b-4">Task 4</button>
+  <div class="out-4">out-4</div>
+</section>
+<script>
+  function max(a, b) {
+    this.textContent = (a > b) ? a : b;
+  }
+  document.querySelector('.b-4').addEventListener('click', () => {
+    max.call(document.querySelector('.out-4'), 22, 13);
+  })
+</script>
+</body>
+</html>

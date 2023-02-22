@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 9 | Unit 06</title>
+</head>
+<body>
+<section>
+  <p><b>Task 9.</b></p>
+  <p>По нажатию на кнопку b-9 запускается анонимная функция, которая через apply передает функции t9 контекст
+    out-9 и массив
+    ar9 элементов. Функция t9 должна вывести максимальный элемент массива.
+  </p>
+  <button class="button-primary  b-9">Task 9</button>
+  <div class="out-9">out-9</div>
+</section>
+<script>
+  let ar9 = [66,55,33,77,22,81,15];
+
+  function t9(...arr) {
+    this.textContent = Math.max.apply(null, arr);
+  }
+
+  document.querySelector('.b-9').addEventListener('click', () => {
+    t9.apply(document.querySelector('.out-9'), ar9);
+  });
+
+</script>
+</body>
+</html>
