@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 6 | Unit 08</title>
+</head>
+<body>
+<section>
+    <p><b>Task 6.</b></p>
+    <p>Давайте напишем pure функцию t6, которая получает массив и возвращает его развернутым на 180 градусов (
+        чистый аналог
+        reverse ). Функция запускается по кнопке .b-6. Для проверки - выводите результат на страницу, через
+        пробел.
+    </p>
+    <button class="button-primary  b-6">Task 6</button>
+    <div class="out-6">out-6</div>
+</section>
+<script>
+    const t6 = (arr) => {
+        let out = [];
+        for (let i = arr.length - 1; i >= 0; i--) {
+            out.push(arr[i]);
+        }
+        return out;
+    }
+
+    document.querySelector('.b-6').addEventListener('click', () => {
+        document.querySelector('.out-6').textContent = t6([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    })
+</script>
+</body>
+</html>

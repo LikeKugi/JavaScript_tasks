@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 8 | Unit 08</title>
+</head>
+<body>
+<section>
+  <p><b>Task 8.</b></p>
+  <p>Давайте напишем pure функцию t8, которая получает массив a8 и год year и проверяет что все года массива
+    больше или равны
+    year - возвращает true, false. Запускается при нажатии t8. Результат работы должен быть виден в out-8.
+  </p>
+  <button class="button-primary  b-8">Task 8</button>
+  <div class="out-8">out-8</div>
+</section>
+<script>
+  let a8 = [1998, 2000, 1999, 2002, 2005];
+  let year = 1998;
+
+  const t8 = (arr, year) => arr.every(el => el >= year);
+
+  document.querySelector('.b-8').addEventListener('click', () => {
+    document.querySelector('.out-8').textContent = t8(a8, year);
+  })
+</script>
+</body>
+</html>

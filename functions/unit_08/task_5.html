@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 5 | Unit 08</title>
+</head>
+<body>
+<section>
+  <p><b>Task 5.</b></p>
+  <p>Давайте напишем pure функцию t5, которая проверяет наличие элемента, класс которой передан ей как аргумент
+    (например
+    '.out-5') на странице и возвращает true или false. Функция запускается по кнопке .b-5.</p>
+  <button class="button-primary  b-5">Task 5</button>
+  <div class="out-5">out-5</div>
+</section>
+
+<script>
+  const t5 = (elem) => !!document.querySelector(elem);
+
+  document.querySelector('.b-5').addEventListener('click', () => {
+    console.log(t5('.out-5'))
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 2 | Unit 08</title>
+</head>
+<body>
+<section>
+    <p><b>Task 2.</b></p>
+    <p>Напишите pure функцию t2, которая принимает два аргумента и выводит в .out-2 больше число. Используйте
+        Math.max. Функция
+        запускается по кнопке .b-2.</p>
+    <button class="button-primary  b-2">Task 2</button>
+    <div class="out-2">out-2</div>
+</section>
+
+<script>
+    const t2 = (a, b) => Math.max(a, b);
+
+    document.querySelector('.b-2').addEventListener('click', () => {
+        document.querySelector('.out-2').textContent = String(t2(5, 10));
+    })
+</script>
+
+</body>
+</html>

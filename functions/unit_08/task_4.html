@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 4 | Unit 08</title>
+</head>
+<body>
+<section>
+  <p><b>Task 4.</b></p>
+  <p>Давайте напишем pure функцию t4, которая выводит переданный ей массив (как аргумент arr) в блок
+    (переданный как аргумент
+    block) через пробел. Функция запускается по кнопке .b-4.</p>
+  <button class="button-primary  b-4">Task 4</button>
+  <div class="out-4">out-4</div>
+</section>
+<script>
+  const t4 = (arr, elem) => {
+    document.querySelector(elem).textContent = arr
+  };
+
+  document.querySelector('.b-4').addEventListener('click', () => {
+    t4([1, 2, 3], '.out-4');
+  })
+</script>
+</body>
+</html>

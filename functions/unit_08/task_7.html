@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 7 | Unit 08</title>
+</head>
+<body>
+<section>
+  <p><b>Task 7.</b></p>
+  <p>Давайте напишем функцию t7, которая позволяет выводить текст переданный ей в качестве аргумента text в
+    блок block. При
+    этом переданный текст с помощью trim очищается от пробелов до и после и переводится в нижний регистр.
+    Ваша задача
+    модицифировать функцию и запуск так, чтобы она стала pure.
+  </p>
+  <button class="button-primary  b-7">Task 7</button>
+  <div class="out-7">out-7</div>
+</section>
+<script>
+  const clearSpaces = (txt) => txt.trim();
+  const lower = (txt) => txt.toLowerCase();
+  const t7 = (txt) => lower(clearSpaces(txt))
+
+  document.querySelector('.b-7').addEventListener('click', () => {
+    document.querySelector('.out-7').textContent = t7('   SoMe TexT To TEsT THe FuNcTIoN      ');
+  })
+</script>
+</body>
+</html>

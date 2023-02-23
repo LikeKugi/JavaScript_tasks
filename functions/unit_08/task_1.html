@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 1 | Unit 08</title>
+</head>
+<body>
+<section>
+  <p><b>Task 1.</b></p>
+  <p>Напишите pure функцию t1, которая принимает два аргумента и выводит в .out-1 cумму всех целых чисел от
+    первого
+    аргумента(включительно) до второго(включительно). Функция запускается по кнопке .b-1.</p>
+  <button class="button-primary  b-1">Task 1</button>
+  <div class="out-1">out-1</div>
+</section>
+<script>
+    function t1(min, max) {
+        let sum = 0;
+        for (let i = min; i <= max; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    document.querySelector('.b-1').addEventListener('click', function () {
+        document.querySelector('.out-1').textContent = t1(1, 50);
+    })
+</script>
+</body>
+</html>
