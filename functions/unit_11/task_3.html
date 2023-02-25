@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 3</title>
+</head>
+<body>
+<section>
+  <p><b>Task 3.</b></p>
+  <p>При нажатии кнопки запускается функция t3. Функция t3, с помощью рекурсивной функции r3 должна очистить
+    текст внутри z-3
+    от тегов span, b, i и p. Должен остаться только текст со знаками препинания в переменной out. Функция t3
+    должна
+    возвращать out.
+  </p>
+  <div class="z-3 section">
+    <p><span>Lorem ipsum </span><span>dolor </span><i>sit</i><b>amet. </b></p>
+    <p><em>Consectetur </em><b>adipiscing </b><span>elit, sed do </span><b>eiusmod </b><i>tempor incididunt
+      ut labore.</i></p>
+  </div>
+  <button class="button-primary  b-3">Task 3</button>
+  <div class="out-3">out-3</div>
+
+</section>
+
+<script>
+  function t3(elem) {
+    let out = '';
+    let texts = [];
+    r3(elem);
+
+
+    function r3(element) {
+      let childrenEls = element.children;
+      if (!childrenEls.length) {
+        texts.push(element.innerText)
+      }
+      else {
+        for (const childrenEl of childrenEls) {
+          r3(childrenEl);
+        }
+      }
+    }
+    out = texts.join(' ');
+
+    return out;
+  }
+
+  document.querySelector('.b-3').addEventListener('click', () => {
+    let z3 = document.querySelector('.z-3');
+    document.querySelector('.out-3').textContent = t3(z3);
+    console.log(t3(z3));
+  });
+</script>
+</body>
+</html>

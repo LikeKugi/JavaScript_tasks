@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 1 | Unit 11</title>
+</head>
+<body>
+<section>
+  <p><b>Task 1.</b></p>
+  <p>При нажатии кнопки запускается функция t1. Функция t1, с помощью рекурсивной функции r1 должна добавлять в
+    out имена всех
+    тегов внутри блока z1. Теги добавляются через пробел. Функция t1 возвращает out.</p>
+  <p>Ожидаемый вывод для данного задания DIV
+    P SPAN DIV B I SPAN STRONG.</p>
+  <div class="z-1 section">
+    Lorem
+    <p>Ipsum <span>is</span></p>
+    <div>simply <b>dummy</b> <i>text</i></div>
+    <span>the <strong>printing</strong> and</span>
+  </div>
+  <button class="button-primary  b-1">Task 1</button>
+  <div class="out-1">out-1</div>
+</section>
+<script>
+  function t1(elem) {
+    let out = '';
+    let elements = [];
+
+    r1(elem);
+
+    function r1(element) {
+      let inner = element.children;
+      elements.push(...[...inner].map(el => el.nodeName))
+      for (const innerElement of inner) {
+        r1(innerElement)
+      }
+    }
+
+    out = elements.join(' ')
+    return out;
+  }
+
+  document.querySelector('.b-1').addEventListener('click', () => {
+    let z1 = document.querySelector('.z-1');
+    document.querySelector('.out-1').textContent = t1(z1);
+  });
+</script>
+</body>
+</html>

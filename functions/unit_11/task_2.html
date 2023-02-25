@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 2 | Unit 11</title>
+</head>
+<body>
+<section>
+  <p><b>Task 2.</b></p>
+  <p>При нажатии кнопки запускается функция t2. Функция t2, с помощью рекурсивной функции r2 должна
+    суммировать числа из всех
+    элементов внутри div.z-2. Результат - сумму s - функция t1 должна возвращать. Вывод на этом примере -
+    10.</p>
+  <div class="z-2 section">
+    Lorem
+    <p>Ipsum <span>2</span></p>
+    <div>simply <b>dummy</b> <i>7</i></div>
+    <span>the <strong>1</strong> and</span>
+  </div>
+  <button class="button-primary  b-2">Task 2</button>
+  <div class="out-2">out-2</div>
+
+</section>
+
+<script>
+  function t2(elem) {
+    let s = 0;
+    r2(elem);
+
+    function r2(element) {
+      let innerEls = element.children;
+      for (const innerEl of innerEls) {
+        s += innerEl.textContent.split(' ').map(Number).reduce((a, x) => a + (x ?  x : 0 ), 0)
+        console.log(s)
+      }
+    }
+
+
+    return s;
+  }
+
+  document.querySelector('.b-2').addEventListener('click', () => {
+    let z2 = document.querySelector('.z-2');
+    document.querySelector('.out-2').textContent = t2(z2);
+  });
+</script>
+</body>
+</html>

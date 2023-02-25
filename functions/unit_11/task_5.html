@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 5 | Unit 11</title>
+</head>
+<body>
+<section>
+  <p><b>Task 5.</b></p>
+  <p>При нажатии кнопки запускается функция t5. Функция t5, с помощью рекурсивной функции r5 должна те теги
+    внутри z-5,
+    которые не имеют вложенных тегов заменить на теги mark.</p>
+  <div class="z-5 section">
+    <div>
+      <p>Hello <span>Hi</span> <span>Ma <b>hai</b></span></p>
+      <div>
+        <h2>Hello <span>Hi</span> <b>one</b></h2>
+      </div>
+    </div>
+  </div>
+  <button class="button-primary  b-5">Task 5</button>
+</section>
+
+<script>
+  function t5(elem) {
+  r5(elem);
+
+  function r5(element) {
+    let childrenTags = element.children;
+    if (!childrenTags.length) {
+      let elem = document.createElement('mark');
+      elem.textContent = element.textContent;
+      element.parentNode.replaceChild(elem, element);
+      return;
+    }
+    for (const childrenTag of childrenTags) {
+      r5(childrenTag)
+    }
+  }
+  }
+
+  document.querySelector('.b-5').addEventListener('click', () => {
+  let z5 = document.querySelector('.z-5');
+  t5(z5);
+  });
+</script>
+</body>
+</html>

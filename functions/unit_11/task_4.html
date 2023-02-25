@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 4 | Unit 11</title>
+</head>
+<body>
+<section>
+  <p><b>Task 4.</b></p>
+  <p>При нажатии кнопки запускается функция t4. Функция t4, с помощью рекурсивной функции r4 должна тем тегам
+    внутри z-4,
+    которые не имеют вложенных тегов добавить style.background = orange.</p>
+  <div class="z-4 section">
+    <div>
+      <p>Hello <span>Hi</span> <span>Ma <b>hai</b></span></p>
+      <div>
+        <h2>Hello <span>Hi</span> <b>one</b></h2>
+      </div>
+    </div>
+  </div>
+  <button class="button-primary  b-4">Task 4</button>
+</section>
+
+<script>
+  function t4(elem) {
+    r4(elem);
+
+    function r4(element) {
+      let childrenEls = element.children;
+      if (!childrenEls.length) {
+        element.style.background = 'orange';
+        return;
+      }
+      for (const childrenEl of childrenEls) {
+        r4(childrenEl);
+      }
+    }
+  }
+
+  document.querySelector('.b-4').addEventListener('click', () => {
+    let z4 = document.querySelector('.z-4');
+    t4(z4);
+  });
+</script>
+</body>
+</html>
