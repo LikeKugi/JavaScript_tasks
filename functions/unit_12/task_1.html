@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 1 | Unit 12</title>
+</head>
+<body>
+<section>
+  <p><b>Task 1.</b></p>
+  <p>Напишите анонимную функцию применяя замыкание. Внутри функции создайте переменную равную 75, и повесьте на кнопку .b-1
+    событие клик и функцию, которая увеличивает переменную на 1 и присваивает блоку .out-1 ширину равную переменной + 'px'.
+    Анонимная функция замыкание должна запускаться при загрузке файла.</p>
+  <div class="out-1" style="background: orangered; width: 75px; margin: 10px;">out-1</div>
+  <button class="button-primary  b-1">Task 1</button>
+</section>
+
+<script>
+  (function () {
+    let w = 75; // тут ваша переменная
+    document.querySelector('.b-1').onclick = function () {
+      // увеличиваем на 1
+      // присваиваем .out-1 новую ширину
+      w += 1;
+      console.log(w)
+      document.querySelector('.out-1').style.width = w+'px';
+    }
+  })();
+</script>
+</body>
+</html>
