@@ -1,57 +1,50 @@
+// ---------------------------------------------------------------------------------------
+// variables and constants
+// ---------------------------------------------------------------------------------------
+
 // bird image
 var birdImg;
 // canvas size
-var canvasX = 800;
-var canvasY = 500;
-// bird position
-var x = 50;
-var y = 50;
-var yV = 1;
-var accel = 0.05;
+var canvasX = 1024;
+var canvasY = 768;
 
-// drawing
+var bird = new Bird();
+let barriers = [];
+
+const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+// ---------------------------------------------------------------------------------------
+// SETUP and DRAWING
+// ---------------------------------------------------------------------------------------
 function setup() {
-
     createCanvas(canvasX, canvasY);
     background(230, 230, 200);
     birdImg = loadImage("img/birds-9515.png");
-
 }
-
-
 
 function draw() {
     background(230, 230, 200);
-    image(birdImg, this.x, this.y, 50, 50);
-    fill(120,120,120);
-    this.changingPosition();
+    image(birdImg, bird.x, bird.y, 50, 50);
+    bird.changingPosition();
 
     rectMode(CORNERS);
-    stroke(100, 250, 0);
-    strokeWeight(2);
-    fill(100, 250, 0);
-    rect(1, 1, 50, 50);
+    obstructions();
+
 }
 
-function keyPressed() {
-    console.log(this.x, this.y)
-    if (keyCode === LEFT_ARROW) {
-        this.x -= 10;
-    } else if (keyCode === RIGHT_ARROW) {
-        this.x += 10;
-    } else if (keyCode === UP_ARROW) {
-        this.y -= 90;
-    } else if (keyCode === 32) {
-        console.log('her')
-        changingAcceleration(false);
-    }
+// ---------------------------------------------------------------------------------------
+// BIRD and its logic
+// ---------------------------------------------------------------------------------------
+
+function Bird() {
+    // bird position
+    this.x = 150;
+    this.y = 50;
+    this.yV = 1;
+    this.accel = 0.05;
 }
-
-// custom functions to change position
-
-function changingAcceleration(down=true) {
+Bird.prototype.changingAcceleration = function (down = true) {
     if (down) {
-        console.log(this.y);
         this.yV += this.accel;
         if (canvasY - this.y < 50) this.yV = 0;
     } else {
@@ -59,9 +52,73 @@ function changingAcceleration(down=true) {
         this.yV -= 90 * this.accel;
     }
 }
-function changingPosition() {
-    this.x = (this.x + 0.5) % canvasX;
-    this.y = (this.y + yV) % canvasY;
+Bird.prototype.changingPosition = function () {
+    // this.x = (this.x + 0.5) % canvasX;
+    this.y = ((this.y + this.yV) % canvasY) > 0 ? (this.y + this.yV) % canvasY : this.yV = 0 && 0;
 
-    changingAcceleration()
+    this.changingAcceleration()
 }
+
+// ---------------------------------------------------------------------------------------
+// Barrier and its logic
+// ---------------------------------------------------------------------------------------
+
+function Rectangles() {
+    this.x = canvasX;
+    this.y1 = randomInteger(canvasY / 5, canvasY / 3);
+    this.color = [randomInteger(10, 250), randomInteger(10, 250), randomInteger(10, 250)]
+}
+Rectangles.prototype.changingPosition = function () {
+    this.x -= 1;
+}
+Rectangles.prototype.UP = function () {
+    return [this.x, 0, this.x+10, this.y1];
+}
+Rectangles.prototype.DOWN = function () {
+    return [this.x, this.y1 + 200, this.x+10, canvasY];
+}
+// ---------------------------------------------------------------------------------------
+// obstructions and its logic
+// ---------------------------------------------------------------------------------------
+
+function getFence() {
+    return new Rectangles();
+}
+
+function obstructions() {
+    if (barriers.length === 0) {
+        barriers.push(getFence());
+    } else {
+        barriers.forEach((el, i)=> {
+            fill(...el.color);
+            rect(...el.UP());
+            rect(...el.DOWN());
+            el.changingPosition();
+            if (el.x < 15) {
+                barriers.splice(i, 1);
+            }
+        })
+        if (canvasX - barriers[barriers.length - 1].x > 150) {
+            barriers.push(getFence());
+        }
+    }
+
+}
+// ---------------------------------------------------------------------------------------
+// keypressed and its logic
+// ---------------------------------------------------------------------------------------
+function keyPressed() {
+    console.log(bird.x, bird.y)
+    if (keyCode === LEFT_ARROW) {
+        bird.x -= 10;
+    } else if (keyCode === RIGHT_ARROW) {
+        bird.x += 10;
+    } else if (keyCode === UP_ARROW) {
+        bird.y -= 90;
+    } else if (keyCode === 32) {
+        bird.changingAcceleration(false);
+    }
+}
+// ---------------------------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------------------------
