@@ -12,13 +12,19 @@ var canvasY = 768;
 var bird = new Bird();
 let barriers = [];
 var progressingGame = true;
+var totalScore = 0;
+var highScore = 0;
 
 
 const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const resetGame = () => {
+    this.highScore = getHighScore() || 0;
     resetObstructions();
     bird.init();
     progressingGame = true;
+    this.totalScore = 0;
+    showScore();
+    showHighScore();
 }
 
 // ---------------------------------------------------------------------------------------
@@ -28,6 +34,8 @@ function setup() {
     createCanvas(canvasX, canvasY);
     background(230, 230, 200);
     birdImg = loadImage("img/birds-9515.png");
+    this.highScore = getHighScore() || 0;
+    showHighScore();
 }
 
 function draw() {
@@ -38,6 +46,8 @@ function draw() {
 
     rectMode(CORNERS);
     obstructions();
+    displayScore();
+    displayHighScore();
 }
 
 // ---------------------------------------------------------------------------------------
@@ -49,15 +59,16 @@ function Bird() {
     this.x = canvasX / 4;
     this.y = canvasY / 4;
     this.yV = 1;
-    this.accel = 0.07 + difficult.level/50;
+    this.accel = 0.2;
 }
+
 Bird.prototype.changingAcceleration = function (down = true) {
     if (down) {
         this.yV += this.accel;
         if (canvasY - this.y < 50) this.yV = 0;
     } else {
         this.yV = 1;
-        this.yV -= (90 * bird.accel) < 5 ? (90 * bird.accel) : 4.95;
+        this.yV -= 7;
         console.log(this.yV, bird.accel)
     }
 }
@@ -74,7 +85,7 @@ Bird.prototype.init = function () {
     this.initAccel();
 }
 Bird.prototype.initAccel = function () {
-    this.accel = 0.05 + difficult.level/400;
+    this.accel = 0.2;
 }
 Bird.prototype.getCoords = function () {
     return [this.x - 10, this.y - 10, this.x + 10, this.y + 10];
@@ -89,6 +100,7 @@ function Rectangles() {
     this.y2 = this.y1 + randomInteger(200, 300);
     this.color = [randomInteger(10, 250), randomInteger(10, 250), randomInteger(10, 250)]
 }
+
 Rectangles.prototype.changingPosition = function () {
     this.x -= (1 + 0.5 * difficult.level);
 }
@@ -99,7 +111,7 @@ Rectangles.prototype.DOWN = function () {
     return [this.x, this.y2, this.x + 10, canvasY];
 }
 Rectangles.prototype.getHole = function () {
-    return [this.x, this.y1, this.x+10, this.y2]
+    return [this.x, this.y1, this.x + 10, this.y2]
 }
 // ---------------------------------------------------------------------------------------
 // obstructions and its logic
@@ -114,11 +126,16 @@ function obstructions() {
     if (barriers.length === 0) {
         barriers.push(getFence());
     } else {
-        barriers.forEach((el, i)=> {
+        barriers.forEach((el, i) => {
             let elCoords = el.getHole();
             if (Math.abs(elCoords[0] - birdCoords[0]) < 10 || Math.abs(elCoords[2] - birdCoords[2]) < 10) {
                 if (!checkCollision(birdCoords, elCoords)) {
-                    console.log('collision');
+                    textSize(48);
+                    text(`Your score: ${this.totalScore}`, canvasX / 2 - canvasX / 5, canvasY / 2 - canvasY / 5, 700, 600);
+                    progressingGame = false;
+                    setTimeout(resetGame, 5000);
+                } else {
+                    increaseScore();
                 }
             }
 
@@ -135,32 +152,39 @@ function obstructions() {
         }
     }
 }
+
 function checkCollision(birdCoords, barrierCoords) {
     return birdCoords[1] > barrierCoords[1] && birdCoords[3] < barrierCoords[3]
 }
+
 function resetObstructions() {
     barriers.length = 0;
 }
+
 // ---------------------------------------------------------------------------------------
 // DIFFICULT level logic
 // ---------------------------------------------------------------------------------------
 function Difficult() {
     this.level = 3;
 }
+
 Difficult.prototype.increase = function () {
     this.level += 1;
 }
 Difficult.prototype.decrease = function () {
     this.level > 1 ? this.level -= 1 : this.level = 0;
 }
+
 function increaseLevel() {
     this.difficult.increase();
     bird.initAccel();
 }
+
 function decreaseLevel() {
     this.difficult.decrease();
     bird.initAccel();
 }
+
 // ---------------------------------------------------------------------------------------
 // keypressed and its logic
 // ---------------------------------------------------------------------------------------
@@ -178,6 +202,40 @@ function keyPressed() {
         bird.changingAcceleration(false);
     }
 }
+
 // ---------------------------------------------------------------------------------------
 //
 // ---------------------------------------------------------------------------------------
+function increaseScore() {
+    this.totalScore += (1 + difficult.level);
+    if (this.totalScore > this.highScore) increaseHighScore(this.totalScore);
+    showScore();
+    showHighScore();
+}
+function increaseHighScore(val) {
+    this.highScore = val;
+    localStorage.setItem('highScore', this.highScore);
+}
+function getHighScore() {
+    return localStorage.getItem('highScore');
+}
+function showScore() {
+    document.querySelector('#total').textContent = this.totalScore;
+}
+function showHighScore() {
+    document.querySelector('#highScore').textContent = this.highScore;
+}
+function displayScore() {
+    stroke(95, 95, 95);
+    strokeWeight(3);
+    fill(220, 210, 215);
+    textSize(32);
+    text(`Score: ${this.totalScore}`, 50, 75);
+}
+function displayHighScore() {
+    stroke(95, 95, 95);
+    strokeWeight(3);
+    fill(220, 210, 215);
+    textSize(32);
+    text(`High score: ${this.highScore}`, 50, 125);
+}
