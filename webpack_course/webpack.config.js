@@ -14,7 +14,7 @@ module.exports = {
   },
   // output
   output: {
-    filename: "[name].[contenthash]", // name of target file or pattern
+    filename: "index.js", // name of target file or pattern
     // possible for | filename: "nameScript.js",
     path: path.resolve(__dirname, "dist"), // output path
   },
@@ -24,4 +24,12 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
