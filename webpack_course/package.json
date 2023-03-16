@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx webpack --mode development",
-    "build": "npx webpack --mode production"
+    "build": "npx webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "clean-webpack-plugin": "^4.0.0"
+    "clean-webpack-plugin": "^4.0.0",
+    "webpack-dev-server": "^4.12.0"
   }
 }

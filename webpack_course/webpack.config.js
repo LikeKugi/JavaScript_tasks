@@ -18,6 +18,9 @@ module.exports = {
     // possible for | filename: "nameScript.js",
     path: path.resolve(__dirname, "dist"), // output path
   },
+  devServer: {
+    port: 9000,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./src/index.html"),
