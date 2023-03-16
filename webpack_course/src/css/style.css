@@ -1,3 +1,13 @@
 body {
     background-color: lightgreen;
 }
+
+.box-img {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.box-img img {
+    width: 100%;
+    object-fit: cover;
+}

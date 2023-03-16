@@ -31,3 +31,7 @@ npm install -D webpack webpack-cli
 ### [_CSS Webpack_](webpack_css.md)
 
 ### [_Style loader_](webpack_style-loader.md)
+
+---
+
+### [_File loader_](webpack_file-loader.md)
