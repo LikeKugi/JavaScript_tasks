@@ -10,7 +10,7 @@ const moveTank = (road) => {
     let out = ['Танк переместился:'];
     let dmg = 0;
     for (let i = 0; i < road.length; i++) {
-        out.push(i+1);
+        out.push(i + 1);
         if (road[i]) {
             dmg += 1;
             if (dmg < 2) out.push('Танк повреждён', 'Танк переместился:');
@@ -23,10 +23,10 @@ const moveTank = (road) => {
     return out.join(' ');
 }
 
-console.log(moveTank( [true, true, true, true, true, true, true, true, true, true] ))
+console.log(moveTank([true, true, true, true, true, true, true, true, true, true]))
 
-console.log(moveTank( [true, false, false, false, false, false, false, false, false, true] ))
+console.log(moveTank([true, false, false, false, false, false, false, false, false, true]))
 
-console.log(moveTank( [false, false, false, true, false, false, false, false, false, false] ))
+console.log(moveTank([false, false, false, true, false, false, false, false, false, false]))
 
-console.log(moveTank( [false, false, false, false, false, false, false, false, false, false] ))
+console.log(moveTank([false, false, false, false, false, false, false, false, false, false]))
