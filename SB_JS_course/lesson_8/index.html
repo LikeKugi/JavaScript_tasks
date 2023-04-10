@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>TODO app</title>
+</head>
+<body>
+<div class="page-container">
+    <header class="header"><h1 class="header__title">TODO app</h1></header>
+    <div class="page-content">
+        <div class="query">
+            <div class="container">
+                <form class="query__form" id="todoForm">
+                    <label class="query__label" for="task">TODO: </label>
+                    <input class="query__input" type="text" name="task" id="task">
+                    <button class="query__btn btn" type="button">+</button>
+                </form>
+            </div>
+        </div>
+        <div class="todo todo__hidden">
+            <div class="container">
+                <ul class="todo__list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="footer"></footer>
+</div>
+<template id="todoItem">
+    <li class="todo__item">
+        <p class="todo__task"></p>
+        <div class="todo__buttons">
+            <button class="todo__btn btn todo__done" type="button">&check;</button>
+            <button class="todo__btn btn todo__reset" type="button">&#10060;</button>
+        </div>
+        <input class="todo__idx" type="hidden" name="idx">
+    </li>
+</template>
+<script src="js/todo.js"></script>
+</body>
+</html>

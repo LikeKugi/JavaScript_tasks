@@ -1,0 +1,80 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.page {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  &-content {
+    flex-grow: 1;
+  }
+}
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.body {
+  margin: 0;
+  padding: 0;
+}
+.btn {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid lightgrey;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.header {
+  margin: 0;
+  padding: 30px 0;
+  &__title {
+    text-align: center;
+  }
+}
+.query {
+  padding: 30px 0;
+  &__form {
+    display: flex;
+  }
+  &__input {
+    width: 90%;
+  }
+}
+.todo {
+  &__list {
+    width: min(768px, 100%);
+    margin: 0 auto;
+  }
+  &__item {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+    &:not(:last-of-type) {
+      margin-bottom: 0.4rem;
+    }
+  }
+  &__item--done {
+    background-color: rgba(17, 255, 0, 0.4);
+  }
+  &__buttons {
+    display: flex;
+  }
+  &__btn {
+    &:not(:last-of-type) {
+      margin-right: 15px;
+    }
+  }
+  &__task {
+    font-size: 1.5rem;
+  }
+  &__hidden {
+    display: none;
+  }
+}
