@@ -1,6 +1,14 @@
 <template>
   <div class="wrapper">
-    <post-form @create="createPost"/>
+    <h1>Page with posts</h1>
+    <my-button class="btn" @click="fetchPosts">Get posts</my-button>
+    <my-button class="btn"
+               @click="showDialog">Create new post
+    </my-button>
+    <my-dialog v-model:show="dialogVisible">
+      <post-form @create="createPost"/>
+    </my-dialog>
+
     <post-list :posts="posts"
                @remove="removePost"/>
   </div>
@@ -9,6 +17,7 @@
 <script>
 import PostForm from "@/components/PostForm.vue";
 import PostList from "@/components/PostList.vue";
+import axios from "axios";
 
 export default {
   name: "App",
@@ -25,6 +34,7 @@ export default {
       ],
       title: '',
       body: '',
+      dialogVisible: false,
     }
   },
   methods: {
@@ -34,10 +44,22 @@ export default {
         title,
         body
       });
+      this.dialogVisible = false;
     },
     removePost(post) {
       this.posts = this.posts.filter((p) => p.id !== post.id);
     },
+    showDialog() {
+      this.dialogVisible = true;
+    },
+    async fetchPosts() {
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
+        this.posts = response.data;
+      } catch (e) {
+        console.log(e);
+      }
+    }
   }
 }
 
