@@ -4,7 +4,8 @@
     <form class="inp-form"
           @submit.prevent>
       <my-input placeholder="title"
-                v-model:value="post.title"/>
+                v-model:value="post.title"
+                v-focus/>
       <my-input placeholder="description"
                 v-model:value="post.body"/>
       <my-button class="btn"
