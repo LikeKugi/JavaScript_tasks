@@ -1,16 +1,38 @@
 <template>
   <div class="wrapper">
     <h1>Page with posts</h1>
-    <my-button class="btn" @click="fetchPosts">Get posts</my-button>
-    <my-button class="btn"
-               @click="showDialog">Create new post
-    </my-button>
+    <div class="app__btns">
+      <my-button class="btn"
+                 @click="fetchPosts">Get posts
+      </my-button>
+      <my-button class="btn"
+                 @click="showDialog">Create new post
+      </my-button>
+      <my-select v-model="selectedSort"
+                 :options="sortOptions"/>
+      <my-input v-model:value="searchQuery"
+                placeholder="search post"/>
+    </div>
     <my-dialog v-model:show="dialogVisible">
       <post-form @create="createPost"/>
     </my-dialog>
 
-    <post-list :posts="posts"
-               @remove="removePost"/>
+    <post-list :posts="sortedAndSearchedPosts"
+               @remove="removePost"
+               v-if="!isPostsLoading"/>
+    <div class="loading"
+         v-else>Loading
+    </div>
+    <div class="pagination__wrapper">
+      <button v-for="pageNumber in totalPages"
+              :key="pageNumber"
+              class="pagination__btn"
+              :class="{
+                'current-page' : page === pageNumber
+              }"
+              @click="changePage(pageNumber)"> {{ pageNumber }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -18,23 +40,30 @@
 import PostForm from "@/components/PostForm.vue";
 import PostList from "@/components/PostList.vue";
 import axios from "axios";
+import MySelect from "@/components/UI/MySelect.vue";
+import MyInput from "@/components/UI/MyInput.vue";
 
 export default {
   name: "App",
   components: {
+    MyInput,
+    MySelect,
     PostList, PostForm,
   },
   data() {
     return {
-      posts: [
-        {id: 1, title: 'Javascript 1', body: 'post description 1'},
-        {id: 2, title: 'Javascript 2', body: 'post description 2'},
-        {id: 3, title: 'Javascript 3', body: 'post description 3'},
-        {id: 4, title: 'Javascript 4', body: 'post description 4'},
-      ],
-      title: '',
-      body: '',
+      posts: [],
+      page: 1,
+      limit: 10,
+      totalPages: 0,
       dialogVisible: false,
+      isPostsLoading: false,
+      selectedSort: '',
+      sortOptions: [
+        {value: 'title', name: 'By title'},
+        {value: 'body', name: 'By description'},
+      ],
+      searchQuery: '',
     }
   },
   methods: {
@@ -53,14 +82,46 @@ export default {
       this.dialogVisible = true;
     },
     async fetchPosts() {
+      this.isPostsLoading = true;
       try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+          params: {
+            _page: this.page,
+            _limit: this.limit,
+          }
+        });
+        this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit);
         this.posts = response.data;
       } catch (e) {
         console.log(e);
+      } finally {
+        this.isPostsLoading = false;
       }
+    },
+    changePage(pageNumber) {
+      this.page = pageNumber;
+      this.fetchPosts();
+    },
+  },
+  mounted() {
+    this.fetchPosts();
+  },
+  watch: {
+    // selectedSort(newValue) {
+    //   console.log(newValue);
+    //   this.posts.sort((post1, post2) => {
+    //     return post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]);
+    //   })
+    // },
+  },
+  computed: {
+    sortedPosts() {
+      return [...this.posts.sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))]
+    },
+    sortedAndSearchedPosts() {
+      return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
     }
-  }
+  },
 }
 
 
@@ -78,6 +139,40 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px;
+}
+
+.app__btns {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.pagination {
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  &__btn {
+    padding: 5px;
+    border: 1px solid teal;
+    cursor: pointer;
+
+    &:not(:last-of-type) {
+      margin-right: 5px;
+    }
+
+    &:hover {
+      background-color: teal;
+      color: #fefefe;
+    }
+  }
+}
+
+.current-page {
+  color: teal;
+  background-color: #fefefe;
 }
 
 </style>

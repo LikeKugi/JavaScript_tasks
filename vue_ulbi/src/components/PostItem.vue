@@ -36,6 +36,9 @@ export default {
   &:not(:last-of-type) {
     margin-bottom: 15px;
   }
+  &__item {
+    max-width: 80%;
+  }
 }
 .btn {
   &:not(:last-of-type) {
