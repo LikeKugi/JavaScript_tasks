@@ -4,6 +4,7 @@ import MainPage from "@/pages/MainPage.vue";
 import PostPage from "@/pages/PostPage.vue";
 import AboutPage from "@/pages/AboutPage.vue";
 import PostidPage from "@/pages/PostidPage.vue";
+import PostPageWithStore from "@/pages/PostPageWithStore.vue";
 
 
 const routes = [
@@ -22,6 +23,10 @@ const routes = [
     {
         path: '/about',
         component: AboutPage,
+    },
+    {
+        path: '/store',
+        component: PostPageWithStore,
     },
 ]
 
