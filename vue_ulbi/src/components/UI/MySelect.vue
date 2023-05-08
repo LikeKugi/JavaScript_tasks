@@ -3,7 +3,7 @@
     <option value=""
             disabled
             selected="selected">
-      Choose smth
+      Order by
     </option>
     <option v-for="option in options"
             :key="option.value"
