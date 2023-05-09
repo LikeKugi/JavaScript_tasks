@@ -1,9 +1,7 @@
 import {createRouter, createWebHistory} from "vue-router";
 
 import MainPage from "@/pages/MainPage.vue";
-import PostPage from "@/pages/PostPage.vue";
 import AboutPage from "@/pages/AboutPage.vue";
-import PostidPage from "@/pages/PostidPage.vue";
 import PostPageWithStore from "@/pages/PostPageWithStore.vue";
 
 
