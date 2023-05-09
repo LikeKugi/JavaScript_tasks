@@ -4,12 +4,12 @@
     <form class="inp-form"
           @submit.prevent>
       <my-input placeholder="title"
-                v-model:value="post.title"
+                v-model:model-value="post.title"
                 v-focus/>
       <my-input placeholder="description"
-                v-model:value="post.body"/>
+                v-model:model-value="post.body"/>
       <my-button class="btn"
-                 @click="createPost">Create
+                 @click="createNewPost">Create
       </my-button>
     </form>
   </div>
@@ -17,6 +17,7 @@
 
 <script>
 
+import {mapMutations} from "vuex";
 
 export default {
   data() {
@@ -28,13 +29,15 @@ export default {
     }
   },
   methods: {
-    createPost() {
-      if (!(this.post.title && this.post.body)) return;
-      this.$emit('create', this.post);
-      this.post = {
-        title: '',
-        body: '',
-      };
+    ...mapMutations({
+      createPost: "post/createPost",
+    }),
+    createNewPost() {
+      this.createPost(this.post);
+      this.closeDialog();
+    },
+    closeDialog() {
+      this.$emit('close', true);
     },
   },
 }

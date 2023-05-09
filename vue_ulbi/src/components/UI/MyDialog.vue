@@ -2,7 +2,8 @@
   <div class="dialog"
        v-if="show"
        @click.stop="hideDialog">
-    <div class="dialog__content" @click.stop>
+    <div class="dialog__content"
+         @click.stop>
       <slot></slot>
     </div>
   </div>
@@ -13,7 +14,7 @@ import toggleMixin from "@/components/mixins/toggleMixin";
 
 export default {
   name: 'my-dialog',
- mixins: [toggleMixin, ],
+  mixins: [toggleMixin,],
 }
 </script>
 
