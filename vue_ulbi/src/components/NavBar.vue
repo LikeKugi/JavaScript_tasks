@@ -1,12 +1,11 @@
 <template>
   <nav class="nav">
-    <h2 class="nav__title" @click="$router.push('/')">Posts and others</h2>
+    <h2 class="nav__title" @click="$router.push('/')">Posts logo</h2>
     <div class="nav__box">
       <ul class="nav__list">
         <li class="nav__item"><my-button class="btn" @click="$router.push('/')">Main</my-button></li>
         <li class="nav__item"><my-button class="btn" @click="$router.push('/posts')">Posts</my-button></li>
         <li class="nav__item"><my-button class="btn" @click="$router.push('/about')">About us</my-button></li>
-        <li class="nav__item"><my-button class="btn" @click="$router.push('/store')">Posts with store</my-button></li>
       </ul>
     </div>
   </nav>

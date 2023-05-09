@@ -14,19 +14,15 @@ const routes = [
     },
     {
         path: '/posts',
-        component: PostPage,
+        component: PostPageWithStore,
     },
     {
         path: '/posts/:id',
-        component: PostidPage,
+        component: PostPageWithStore,
     },
     {
         path: '/about',
         component: AboutPage,
-    },
-    {
-        path: '/store',
-        component: PostPageWithStore,
     },
 ]
 
