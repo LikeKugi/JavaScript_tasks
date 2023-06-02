@@ -6,6 +6,7 @@
         <li class="nav__item"><my-button class="btn" @click="$router.push('/')">Main</my-button></li>
         <li class="nav__item"><my-button class="btn" @click="$router.push('/posts')">Posts</my-button></li>
         <li class="nav__item"><my-button class="btn" @click="$router.push('/about')">About us</my-button></li>
+        <li class="nav__item"><my-button class="btn" @click="$router.push('/composition')">Composition</my-button></li>
       </ul>
     </div>
   </nav>
