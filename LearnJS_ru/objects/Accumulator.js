@@ -16,10 +16,10 @@ function Accumulator(val = 0) {
 
 const randint = (max = 100, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
-const accum = new Accumulator(randint());
-console.log(accum.value);
+const currentVal = new Accumulator(randint());
+console.log(currentVal.value);
 
-accum.read(randint());
-accum.read(randint());
+currentVal.read(randint());
+currentVal.read(randint());
 
-console.log(accum.value);
+console.log(currentVal.value);
